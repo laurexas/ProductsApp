@@ -1,0 +1,30 @@
+@import "src/styles/utils/vars";
+
+.header {
+	min-height: 151px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	h1 {
+		font-size: 36px;
+		font-weight: 500;
+	}
+	span {
+		font-size: 14px;
+	}
+	.links {
+		display: flex;
+		margin-top: 10px;
+		h3 {
+			margin: 8px 15px;
+			padding: 2px;
+			&:hover {
+				border-bottom: 1px solid $black;
+				transition: 1.5s;
+				cursor: pointer;
+			}
+		}
+	}
+}

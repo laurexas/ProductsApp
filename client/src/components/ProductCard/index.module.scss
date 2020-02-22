@@ -1,0 +1,74 @@
+@import 'src/styles/utils/vars';
+
+.container {
+	width: 20%;
+	margin: 2%;
+	height: 400px;
+	.card {
+		position: relative;
+		img {
+			width: 100%;
+			position: relative;
+		}
+		.marker {
+			box-sizing: border-box;
+			color: #222;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 13px;
+			line-height: 20px;
+			margin-top: 12px;
+			width: 100%;
+			z-index: 1;
+			position: absolute;
+			top: 0;
+			left: 0;
+			.priceTag {
+				background-color: #efe4ce;
+				padding: 4px 9px 4px 8px;
+			}
+			.icon {
+				width: 22px;
+				height: 22px;
+				padding: 4px 12px 4px 8px;
+				&:hover {
+					fill: $error;
+				}
+			}
+		}
+	}
+	.details {
+		box-sizing: border-box;
+		font-size: 13px;
+		min-height: 105px;
+		position: relative;
+		text-align: left;
+		z-index: 1;
+		color: $grey6;
+		.productHeader {
+			display: flex;
+			justify-content: space-between;
+		}
+		.itemName {
+			margin: 10px 0;
+		}
+		.itemPrice {
+			font-weight: bold;
+		}
+	}
+}
+
+@media only screen and (max-width: 650px) {
+	.container {
+		width: 46%;
+		height: 350px;
+	}
+}
+
+@media only screen and (max-width: 769px) {
+	.container {
+		width: 29%;
+		height: 320px;
+	}
+}

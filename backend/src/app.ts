@@ -9,7 +9,7 @@ app.use(express.json());
 try {
   app.use("/products", function(req, res) {
     con.query(
-      'SELECT filename, product_name, actual_price, brand_name FROM products_list',
+      'SELECT filename, product_name, actual_price, brand_name FROM products_list LIMIT 52',
       async (err, data) => {
         if (err) throw err;
         await res.json(data)
