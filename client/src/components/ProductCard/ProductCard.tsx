@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import style from './index.module.scss';
-import Icon from '../Icon/Icon';
+import {Icon} from '../Icon/Icon';
 
 
 interface Product {

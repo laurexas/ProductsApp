@@ -1,37 +1,42 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { useEffect, FC } from 'react';
 import style from './index.module.scss';
 import ProductCard from 'src/components/ProductCard/ProductCard';
-import axios, { AxiosResponse } from 'axios';
+import Loader from 'src/components/Loader/Loader';
+import { ArrowIcon } from 'src/components/Icon/Icon';
 
 
-interface Products {
-    filename: string, 
-    product_name: string, 
-    actual_price: number, 
-    brand_name: string 
+interface ProductsProps {
+    fetchProducts: () => void,
+    products: {
+        total: number,
+        data: {
+            filename: string, 
+            product_name: string, 
+            actual_price: number, 
+            brand_name: string 
+        }[]
+    } | null,
+    isVisible: boolean,
+    scrollToTop: () => void
 }
 
-
-const Container: FC = ():JSX.Element => {
-
-    const fetchData = async () => {
-        const { data } : AxiosResponse<Products[]> = await axios.get('http://localhost:8888/products');
-        setProducts(data)
-    } 
-
-    const [ products, setProducts ] = useState<null | Products[] >(null);
-
+ const Container: FC<ProductsProps> = (props: ProductsProps):JSX.Element => {
     useEffect(() => {
-        fetchData()
+        props.fetchProducts();
     }, [])
-
-    if(!products) return <p>Loading</p> 
+   
+    
+    if(!props.products) return <Loader loading={true} />
 
     return (
         <div className={style.jumbatron}>
-            {products.map(product => (
-                <ProductCard src={product.filename} brand={product.brand_name} price={product.actual_price} name={product.product_name} />
+         
+            {props.products.data.map((product,i) => (
+                <ProductCard key={i} src={product.filename} brand={product.brand_name} price={product.actual_price} name={product.product_name} />
             ))}
+            {props.isVisible ? <div className={style.icon} onClick={props.scrollToTop}>
+              <ArrowIcon />
+            </div> : null}
         </div>
     )
 }

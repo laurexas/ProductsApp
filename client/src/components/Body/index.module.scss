@@ -5,4 +5,9 @@
 	background-color: transparent;
 	display: flex;
 	flex-wrap: wrap;
+	.icon {
+		position: fixed;
+		right: 10px;
+		top: 300px;
+	}
 }
