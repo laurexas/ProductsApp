@@ -13,7 +13,7 @@ Git clone project or simply download project
 When project is downloaded run `npm install` command in your working directory
 
 ### `npm start`
-After all dependencies are install run npm start command.
+After all dependencies are installed run npm start command.
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
