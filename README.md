@@ -1,19 +1,10 @@
 
-# Setup
+# App information
 
-Install dependencies:
+In backend folder you can find NodeJS and MySQL setup 
 
-    npm install
+    ./backend
 
-Create environment .env file:
+In client folder you can find all the client side code used in this application.
 
-    SERVER_PORT=<your_port>
-    PORT=<your_sql_port>
-    HOST=<your_host>
-    USER=<sql_user>
-    PASSWORD=<database_password>
-    DATABASE=<database_name>
-
-Start:
-
-npm run start
+   ./client
