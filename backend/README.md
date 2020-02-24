@@ -1,5 +1,6 @@
 
 # Setup
+Create table called products_list in your database, create columns named filename, product_name, actual_price, brand_name
 
 Install dependencies:
 
