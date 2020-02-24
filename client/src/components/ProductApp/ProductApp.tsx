@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import style from './index.module.scss';
 import Header from 'src/components/Header/Header';
 import Body from 'src/components/Body/Container';
 import Button from 'src/components/UI/Button/Button';
-import Loader from 'src/components/Loader/Loader';
+import Filters from 'src/components/Filters/Filters';
 import axios, { AxiosResponse } from 'axios';
+
 
 
 
@@ -25,12 +25,11 @@ const ProductApp = () => {
     const limit = 52;
     const fetchProductsNumber = page * limit;
     const [ isVisible, setVisibility] = useState<boolean>(false);
-    const [loading, setLoading] = useState<boolean>(false);
+
   
     const fetchData = async () => {
         const { data } : AxiosResponse<Products> = await axios.get(`http://localhost:8888/products?page=${page}&limit=${limit}`);
         if(!products) {
-         
             setProducts(data)
         } else {
             setProducts({total: products.total, data: [...products.data,...data.data]})
@@ -73,15 +72,32 @@ const ProductApp = () => {
           }
     }
 
-    const sortByPrice = () => {
+    const sortAsc = () => {
         const sorted = products && products.data.sort((a,b) => a.actual_price - b.actual_price);
+        if(!products) {
+            return null;
+        } else {
+            setProducts({"total": products.total, data: [...sorted]})
+        }   
+       
+    }
+
+    const sortDesc = () => {
+        const sorted = products && products.data.sort((a,b) => b.actual_price - a.actual_price);
+        
+        if(!products) {
+            return null;
+        } else {
+            setProducts({"total": products.total, data: [...sorted]})
+        }   
+       
     }
 
 
     return (
         <div>
-             <button onClick={() => sortByPrice()}>sort me</button>
             <Header />
+            <Filters sortAsc={sortAsc} sortDesc={sortDesc}/>
             <Body fetchProducts={fetchData} products={products} isVisible={isVisible}  scrollToTop={scrollToTop} />
             {products && products.total > fetchProductsNumber ? <Button changePage={changePage} page={page}/> : null}    
         </div>

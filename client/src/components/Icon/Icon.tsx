@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import style from './index.module.scss';
+
 
 
 interface ClassName {
